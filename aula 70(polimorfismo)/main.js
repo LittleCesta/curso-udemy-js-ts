@@ -1,0 +1,60 @@
+// Superclasse(Classe mãe)
+function Conta(agencia, conta, saldo){
+  this.agencia = agencia;
+  this.conta = conta;
+  this.saldo = saldo;
+}
+
+Conta.prototype.sacar = function(valor){
+  console.log('Sacando...')
+  if (this.saldo < valor) {
+    console.log('Saldo insuficiente')
+    this.verSaldo()
+    return
+  }
+  this.saldo -= valor
+  this.verSaldo()
+}
+Conta.prototype.depositar = function(valor){
+  console.log('Depositando...')
+  this.saldo += valor
+  this.verSaldo()
+}
+
+Conta.prototype.verSaldo = function(){
+  console.log(`Agencia: ${this.agencia} Conta: ${this.conta}`)
+  console.log(`Saldo: R$${this.saldo.toFixed(2)}`)
+  console.log('---')
+}
+
+function ContaCorrente(agencia, conta, saldo, limite){
+  Conta.call(this, agencia, conta, saldo)
+  this.limite = limite
+}
+
+ContaCorrente.prototype = Object.create(Conta.prototype)
+ContaCorrente.prototype.constructor = ContaCorrente
+
+ContaCorrente.prototype.sacar = function(valor){
+  if (valor > (this.saldo + this.limite)){
+    console.log('Saldo insuficiente')
+    this.verSaldo()
+    return
+  }
+  this.saldo -= valor
+  this.verSaldo()
+}
+
+// const cc = new ContaCorrente(11, 22, 0, 100)
+// cc.depositar(10)
+// cc.sacar(110)
+
+function ContaPoupanca(agencia, conta, saldo){
+  Conta.call(this, agencia, conta, saldo)
+}
+ContaPoupanca.prototype = Object.create(Conta.prototype)
+ContaPoupanca.prototype.constructor = ContaPoupanca
+
+const cc = new ContaPoupanca(11, 22, 0)
+cc.depositar(10)
+cc.sacar(110)
