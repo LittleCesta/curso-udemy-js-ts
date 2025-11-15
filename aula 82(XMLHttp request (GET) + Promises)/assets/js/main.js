@@ -49,13 +49,13 @@ document.addEventListener("click", (e) => {
 async function loadPage(elemento) {
   const href = elemento.getAttribute("href");
 
-  const objConfit = {
+  const objConfig = {
     method: "GET",
     url: href,
   };
 
   try{
-  const response = await request(objConfit);
+  const response = await request(objConfig);
   loadResult(response);
   }catch(e){
     loadError(e, href);
@@ -70,7 +70,6 @@ function loadResult(response) {
 function loadError(error, page) {
   const container = document.querySelector(".container");
   if (container.querySelector(".error")) {
-    console.log("Erro ja carregado");
     return;
   }
   const errorDiv = document.createElement("div");
