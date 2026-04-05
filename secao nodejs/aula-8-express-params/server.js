@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true })); // para interpretar o body da r
 // Parâmetros -> 12345
 // Query Strings -> ?campanha=googleads
 
-app.get("/", (req, res) => {
+app.get("/", (req, res ) => {
   res.send(`
     <form action="/" method="POST">
       <input type="text" name="nome">
