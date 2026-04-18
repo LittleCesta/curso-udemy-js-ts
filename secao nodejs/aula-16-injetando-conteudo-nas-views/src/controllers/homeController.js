@@ -10,13 +10,18 @@ const HomeModel = require("../models/HomeModel");
 
 exports.paginaInicial = async (req, res) => {
   try {
-    const dados = await HomeModel.find();
+    // const dados = await HomeModel.find();
     // req.session.usuario = { nome: "Cesar", logado: true }
     // req.flash('info', 'Bem-vindo à página inicial!');
     // req.flash('error', 'Olá mundo"');
     // req.flash('success', 'Oiii');
-    console.log(req.flash('info'), req.flash('success'), req.flash('error'))
-    res.render("index");
+    // console.log(req.flash('info'), req.flash('success'), req.flash('error'))
+    // Quando criamos a variavel com res.locals dentro da rota,
+    // ela só fica disponível para aquela rota.
+    res.render("index", {
+      titulo: "Este é o título da minha página",
+      numeros: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    });
   } catch (e) {
     console.error(e);
     res.status(500).send("Erro ao buscar dados");

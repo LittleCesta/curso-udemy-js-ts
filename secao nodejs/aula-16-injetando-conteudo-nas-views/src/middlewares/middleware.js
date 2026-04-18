@@ -1,9 +1,6 @@
 exports.middlewareGlobal = (req, res, next) => {
-  if(req.body){
-    req.body.cliente = req.body.cliente.toUpperCase()
-    console.log()
-    console.log(`Você postou o ${req.body.cliente}`)
-    console.log()
-  }
+  // Injetando pelo middleware eu consigo inserir em mais
+  // de uma rota a mesma variável, sem precisar repetir o código
+  res.locals.umaVariavelLocal = "Este é o valor da variável local"
   next()
 }

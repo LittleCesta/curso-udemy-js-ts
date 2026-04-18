@@ -1,14 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo</title>
-</head>
-<body>
+<%- include('includes/head') %>
+
     
     <section class="container">
-    <h1>Lorem ipsum dolor sit amet</h1>
+    <h1>
+      <!-- Forma de chamar a variável que foi injetada pelo controller, usando o res.render() e passando um objeto com as chaves e valores. O valor da chave é o que vai aparecer na tela, e a chave é o nome da variável que eu vou usar na view para acessar esse valor. -->
+      <!-- <%= titulo %> 
+      <%- titulo %>  -->
+
+      <!-- Inserindo js dentro do html usando o EJS -->
+      <!-- <% if(typeof titulo !== 'undefined') { %>
+        <%= titulo %>
+      <% } else { %>
+        Título não definido
+      <% } %> -->
+
+      <!-- Usando arrays e foreach dentro do EJS para mostrar os números na tela: -->
+      <!-- <% numeros.forEach((num) => { %>
+        <%= num %><br>
+      <% }); %> -->
+
+    </h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       Repellendus nisi explicabo saepe voluptatibus consequuntur et corporis
@@ -21,7 +32,4 @@
         <button>Enviar</button>
     </form>
   </section>
-
-    <script src="./assets/js/bundle.js"></script>
-</body>
-</html>
+<%- include('includes/footer') %>
